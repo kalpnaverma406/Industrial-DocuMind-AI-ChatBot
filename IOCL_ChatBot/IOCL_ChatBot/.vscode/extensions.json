@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "ms-dotnettools.csdevkit",
+    "ms-dotnettools.csharp",
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "humao.rest-client",
+    "42Crunch.vscode-openapi"
+  ]
+}

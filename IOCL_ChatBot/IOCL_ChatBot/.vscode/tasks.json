@@ -1,0 +1,49 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build-backend",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}/Backend/IOCLChatBot/IOCLChatBot.csproj",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "problemMatcher": "$msCompile",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "install-python-deps",
+      "type": "shell",
+      "command": "pip install -r Frontend/requirements.txt",
+      "problemMatcher": [],
+      "group": "build"
+    },
+    {
+      "label": "run-backend",
+      "type": "shell",
+      "command": "dotnet run --project Backend/IOCLChatBot/IOCLChatBot.csproj",
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": [{"regexp": "^.*$", "file": 1, "location": 2, "message": 3}],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Starting.*$",
+          "endsPattern": "^.*Now listening on.*$"
+        }
+      }
+    },
+    {
+      "label": "run-frontend",
+      "type": "shell",
+      "command": "streamlit run Frontend/app.py --server.port 8501",
+      "isBackground": true,
+      "problemMatcher": []
+    }
+  ]
+}

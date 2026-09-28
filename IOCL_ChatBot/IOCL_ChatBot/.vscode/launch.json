@@ -1,0 +1,45 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "🔵 .NET Backend (C#)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build-backend",
+      "program": "${workspaceFolder}/Backend/IOCLChatBot/bin/Debug/net8.0/IOCLChatBot.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/Backend/IOCLChatBot",
+      "stopAtEntry": false,
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+      },
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "sourceFileMap": {
+        "/Views": "${workspaceFolder}"
+      }
+    },
+    {
+      "name": "🟠 Streamlit Frontend (Python)",
+      "type": "python",
+      "request": "launch",
+      "module": "streamlit",
+      "args": [
+        "run",
+        "${workspaceFolder}/Frontend/app.py",
+        "--server.port=8501",
+        "--server.headless=false"
+      ],
+      "justMyCode": true,
+      "console": "integratedTerminal"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "🚀 Run Full App (Backend + Frontend)",
+      "configurations": ["🔵 .NET Backend (C#)", "🟠 Streamlit Frontend (Python)"]
+    }
+  ]
+}
